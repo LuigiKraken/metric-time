@@ -2,6 +2,8 @@
 
 A decimal clock and calendar that replaces every arbitrary division in our timekeeping with clean base-10 structure.
 
+**[Live Demo](https://luigikraken.github.io/metric-time/)**
+
 ## Why This Makes Sense
 
 Our current calendar is a patchwork of Babylonian base-60, Roman political compromises, and papal corrections. Months have 28, 29, 30, or 31 days depending on which one. Weeks don't align with months. Hours use base-24, minutes and seconds use base-60. None of it composes, none of it is mental-math friendly, and none of it had to be this way.
