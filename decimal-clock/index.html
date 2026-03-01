@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Decimal Clock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link id="theme" rel="stylesheet" href="style-crt.css">
+</head>
+<body>
+  <div class="panel">
+    <div class="panel-label">Decimal Time</div>
+
+    <div class="date-row">
+      <div class="segment-group">
+        <div class="digit-wrap" id="dy"></div>
+        <div class="seg-label">Year</div>
+      </div>
+
+      <span class="date-dot">.</span>
+
+      <div class="segment-group">
+        <div class="digit-wrap" id="dMonth"></div>
+        <div class="seg-label">Month</div>
+      </div>
+
+      <div class="segment-group">
+        <div class="digit-wrap" id="dWeek"></div>
+        <div class="seg-label">Week</div>
+      </div>
+
+      <div class="segment-group">
+        <div class="digit-wrap" id="dDay"></div>
+        <div class="seg-label">Day</div>
+      </div>
+    </div>
+
+    <div class="clock-row">
+      <div class="segment-group">
+        <div class="digit-wrap" id="dh"></div>
+        <div class="seg-label">Hour</div>
+      </div>
+
+      <span class="colon">:</span>
+
+      <div class="segment-group">
+        <div class="digit-wrap" id="dm"></div>
+        <div class="seg-label">Minutes</div>
+      </div>
+
+      <span class="colon">:</span>
+
+      <div class="segment-group">
+        <div class="digit-wrap" id="ds"></div>
+        <div class="seg-label">Seconds</div>
+      </div>
+    </div>
+
+    <div class="explain">
+      <div class="desc">
+        1 year = ~3.65 months of 100 days · 1 month = 10 weeks · 1 week = 10 days
+      </div>
+      <div class="desc" style="margin-top:6px;">
+        1 day = 10 hours · 1 hour = 100 minutes · 1 minute = 100 seconds · 1 second ≈ 0.864 real seconds
+      </div>
+    </div>
+  </div>
+
+  <button id="style-btn">Style</button>
+
+  <script>
+    const $ = id => document.getElementById(id);
+    const z = (n, len) => String(n).padStart(len, '0');
+
+    const themes = ['style-crt.css', 'style-dark.css', 'style-minimal.css', 'style-7seg.css'];
+    const labels = ['CRT', 'Dark', 'Minimal', '7-SEG'];
+    let themeIndex = 0;
+
+    const btn = $('style-btn');
+    btn.addEventListener('click', () => {
+      themeIndex = (themeIndex + 1) % themes.length;
+      $('theme').href = themes[themeIndex];
+      btn.textContent = labels[(themeIndex + 1) % themes.length];
+      // rebuild all digits so segment spans are present for the 7-seg theme
+      Object.values(digitEls).forEach(([el, digits]) => {
+        el.dataset.last = '';
+        setDigits(el, parseInt(el.dataset.lastVal || '0'), digits);
+      });
+    });
+    btn.textContent = labels[1];
+
+    const SEG_NAMES = ['a','b','c','d','e','f','g'];
+
+    function setDigits(el, value, digits) {
+      const str = z(value, digits);
+      el.dataset.lastVal = str;
+      if (el.dataset.last === str) return;
+      el.dataset.last = str;
+      el.innerHTML = '';
+      for (const ch of str) {
+        const cell = document.createElement('span');
+        cell.className = 'digit-cell';
+        cell.dataset.val = ch;
+        const ghost = document.createElement('span');
+        ghost.className = 'ghost-char';
+        ghost.textContent = '8';
+        const val = document.createElement('span');
+        val.className = 'val-char';
+        val.textContent = ch;
+        cell.appendChild(ghost);
+        cell.appendChild(val);
+        for (const s of SEG_NAMES) {
+          const seg = document.createElement('span');
+          seg.className = 'seg seg-' + s;
+          cell.appendChild(seg);
+        }
+        el.appendChild(cell);
+      }
+    }
+
+    // track els for theme-switch rebuild
+    const digitEls = {};
+
+    function tick() {
+      const now = new Date();
+
+      const doy = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000) - 1;
+      setDigits($('dy'),     now.getFullYear() + 100000, 6);
+      setDigits($('dMonth'), (doy / 100) | 0,           1);
+      setDigits($('dWeek'),  ((doy % 100) / 10) | 0,    1);
+      setDigits($('dDay'),   doy % 10,                  1);
+
+      const secs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
+      const t = Math.floor(secs / 86400 * 100000);
+      setDigits($('dh'), (t / 10000) | 0,         1);
+      setDigits($('dm'), (t % 10000 / 100) | 0,   2);
+      setDigits($('ds'), t % 100,                  2);
+
+      // register for theme-switch rebuilds (only needs to happen once)
+      if (!digitEls.dy) {
+        digitEls.dy     = [$('dy'),     6];
+        digitEls.dMonth = [$('dMonth'), 1];
+        digitEls.dWeek  = [$('dWeek'),  1];
+        digitEls.dDay   = [$('dDay'),   1];
+        digitEls.dh     = [$('dh'),     1];
+        digitEls.dm     = [$('dm'),     2];
+        digitEls.ds     = [$('ds'),     2];
+      }
+    }
+
+    tick();
+    setInterval(tick, 100);
+  </script>
+</body>
+</html>
