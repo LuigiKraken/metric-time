@@ -161,7 +161,138 @@ body {
   color: #555;
 }
 
+#conv-link {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 200;
+  background: transparent;
+  color: #bbb;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+#conv-link:hover {
+  background: #f0f0f0;
+  color: #555;
+}
+
 @media (max-width: 500px) {
   .panel { padding: 30px 20px 20px; }
   .colon { padding: 0 2px; }
+}
+
+/* ── Conversion page overrides ── */
+body.conv-page {
+  display: block;
+  height: auto;
+  min-height: 100vh;
+  overflow: auto;
+  color: #333;
+}
+
+body.conv-page h1 {
+  color: #222;
+  text-shadow: none;
+}
+
+body.conv-page h2 {
+  color: #555;
+  text-shadow: none;
+}
+
+body.conv-page .subtitle,
+body.conv-page .section-desc {
+  color: #aaa;
+}
+
+body.conv-page th, body.conv-page td {
+  border: 1px solid #e8e8e8;
+}
+
+body.conv-page th {
+  background: #f5f5f5;
+  color: #555;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+body.conv-page .corner {
+  background: transparent;
+  border-color: #f0f0f0;
+}
+
+body.conv-page .row-header {
+  color: #555;
+  background: #fafafa;
+}
+
+body.conv-page td {
+  color: #888;
+}
+
+body.conv-page td.highlight {
+  color: #222;
+  text-shadow: none;
+  font-weight: 700;
+}
+
+body.conv-page tbody tr:hover td {
+  background: #f9f9f9;
+}
+
+body.conv-page .time-table td:nth-child(2),
+body.conv-page .time-table th:nth-child(2) {
+  border-left-color: #ccc;
+}
+
+body.conv-page .fact-card {
+  border: 1px solid #e8e8e8;
+  background: #fafafa;
+}
+
+body.conv-page .fact-q {
+  color: #aaa;
+}
+
+body.conv-page .fact-a {
+  color: #222;
+  text-shadow: none;
+}
+
+body.conv-page .fact-a .old {
+  color: #ccc;
+  font-size: 0.7em;
+}
+
+body.conv-page .round-table td.feels {
+  text-align: left;
+  color: #999;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+body.conv-page .round-table .accent-row td {
+  background: #f5f5f5;
+}
+
+body.conv-page .round-table .accent-row td.highlight {
+  color: #111;
+  text-shadow: none;
+}
+
+body.conv-page .persuasion-note {
+  color: #aaa;
+}
+
+body.conv-page .persuasion-note strong {
+  color: #555;
+  letter-spacing: 1px;
 }

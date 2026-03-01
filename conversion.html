@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metric Time — Conversion Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link id="theme" rel="stylesheet" href="style-crt.css">
+  <script>
+    (function () {
+      var themes = ['style-crt.css', 'style-dark.css', 'style-minimal.css', 'style-7seg.css'];
+      var saved = localStorage.getItem('mt-theme');
+      if (saved && themes.indexOf(saved) !== -1) {
+        document.getElementById('theme').href = saved;
+      }
+    })();
+  </script>
+  <style>
+    /* ── conversion page layout (theme colors come from the linked CSS) ── */
+
+    body {
+      display: block !important;
+      height: auto !important;
+      min-height: 100vh !important;
+      overflow: auto !important;
+      overflow-x: hidden;
+      padding: 40px 20px 80px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      text-align: center;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 50px 0 20px;
+      text-align: center;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+
+    .section-desc {
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      margin: 0 auto 30px;
+      max-width: 960px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: 0 auto;
+      font-size: clamp(10px, 1.4vw, 13px);
+      width: 100%;
+    }
+
+    th, td {
+      padding: 10px 14px;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    thead th {
+      text-align: center;
+      font-size: clamp(9px, 1.2vw, 11px);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .row-header {
+      text-align: left;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: clamp(9px, 1.2vw, 11px);
+      letter-spacing: 1px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 960px;
+      margin: 0 auto 30px;
+    }
+
+    .fact-card {
+      border-radius: 8px;
+      padding: 18px 20px;
+    }
+
+    .fact-q {
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .fact-a {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+    }
+
+    .persuasion-note {
+      max-width: 700px;
+      margin: -10px auto 50px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+      letter-spacing: 0.5px;
+    }
+
+    .time-table td:nth-child(2),
+    .time-table th:nth-child(2) {
+      border-left-width: 2px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 10px 80px; }
+      th, td { padding: 7px 8px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body class="conv-page">
+
+  <h1>Conversion Reference</h1>
+  <div class="subtitle">Standard time ↔ Metric time</div>
+
+  <!-- QUICK FACTS -->
+  <h2>Quick Facts</h2>
+  <div class="section-desc">In metric time, every answer is a round number</div>
+
+  <div class="facts">
+    <div class="fact-card">
+      <div class="fact-q">Hours in a day</div>
+      <div class="fact-a">10 <span class="old">was 24</span></div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-q">Minutes in a day</div>
+      <div class="fact-a">1,000 <span class="old">was 1,440</span></div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-q">Seconds in a day</div>
+      <div class="fact-a">100,000 <span class="old">was 86,400</span></div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-q">Hours in a week</div>
+      <div class="fact-a">100 <span class="old">was 168</span></div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-q">Hours in a month</div>
+      <div class="fact-a">1,000 <span class="old">was 672–744</span></div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-q">Days in a month</div>
+      <div class="fact-a">100 <span class="old">was 28–31</span></div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-q">Days in a week</div>
+      <div class="fact-a">10 <span class="old">was 7</span></div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-q">Weeks in a year</div>
+      <div class="fact-a">36.5 <span class="old">was 52.18</span></div>
+    </div>
+  </div>
+
+  <!-- ROUND METRIC DURATIONS -->
+  <h2>Round Numbers, Real Intuition</h2>
+  <div class="section-desc">No more "how many minutes is that?" — in metric time, the math just works</div>
+
+  <div class="table-wrap">
+    <table class="round-table">
+      <thead>
+        <tr>
+          <th>Metric Duration</th>
+          <th>Standard Equivalent</th>
+          <th>You Already Know This</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="highlight">1 metric min</td><td>1 min 26 sec</td><td class="feels">Reheat leftovers</td></tr>
+        <tr><td class="highlight">5 metric min</td><td>7 min 12 sec</td><td class="feels">Hit snooze once</td></tr>
+        <tr><td class="highlight">10 metric min</td><td>14 min 24 sec</td><td class="feels">Quick coffee break</td></tr>
+        <tr><td class="highlight">25 metric min</td><td>36 min</td><td class="feels">Watch a sitcom</td></tr>
+        <tr class="accent-row"><td class="highlight">50 metric min</td><td>1 hr 12 min</td><td class="feels">A solid gym session</td></tr>
+        <tr class="accent-row"><td class="highlight">1 metric hr</td><td>2 hr 24 min</td><td class="feels">A feature film</td></tr>
+        <tr class="accent-row"><td class="highlight">2 metric hr</td><td>4 hr 48 min</td><td class="feels">Half a work day</td></tr>
+        <tr class="accent-row"><td class="highlight">3 metric hr</td><td>7 hr 12 min</td><td class="feels">Full work day</td></tr>
+        <tr class="accent-row"><td class="highlight">5 metric hr</td><td>12 hr exactly</td><td class="feels">Sunrise to sunset</td></tr>
+        <tr><td class="highlight">1 metric week</td><td>10 days</td><td class="feels">A proper vacation</td></tr>
+        <tr><td class="highlight">1 metric month</td><td>100 days</td><td class="feels">An entire season</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="persuasion-note">
+    Notice the pattern: 5 metric hours = exactly half a day. 10 = a full day. No fractions, no conversion charts, no mental math.<br>
+    <strong>You think in tens already — now your clock can too.</strong>
+  </div>
+
+  <!-- UNIT CROSS-REFERENCE -->
+  <h2>Unit Cross-Reference</h2>
+  <div class="section-desc">Each cell shows how many metric units equal one standard unit</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="corner">1 standard →</th>
+          <th>Metric Sec</th>
+          <th>Metric Min</th>
+          <th>Metric Hr</th>
+          <th>Metric Day</th>
+          <th>Metric Week</th>
+          <th>Metric Month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="row-header">Standard Second</th>
+          <td class="highlight">1.1574</td>
+          <td>0.01157</td>
+          <td>0.000116</td>
+          <td>0.0000116</td>
+          <td>0.00000116</td>
+          <td>0.000000116</td>
+        </tr>
+        <tr>
+          <th class="row-header">Standard Minute</th>
+          <td>69.44</td>
+          <td class="highlight">0.6944</td>
+          <td>0.006944</td>
+          <td>0.000694</td>
+          <td>0.0000694</td>
+          <td>0.00000694</td>
+        </tr>
+        <tr>
+          <th class="row-header">Standard Hour</th>
+          <td>4,166.7</td>
+          <td>41.667</td>
+          <td class="highlight">0.4167</td>
+          <td>0.04167</td>
+          <td>0.004167</td>
+          <td>0.0004167</td>
+        </tr>
+        <tr>
+          <th class="row-header">Standard Day</th>
+          <td>100,000</td>
+          <td>1,000</td>
+          <td class="highlight">10</td>
+          <td class="highlight">1</td>
+          <td>0.1</td>
+          <td>0.01</td>
+        </tr>
+        <tr>
+          <th class="row-header">Standard Week (7 d)</th>
+          <td>700,000</td>
+          <td>7,000</td>
+          <td>70</td>
+          <td>7</td>
+          <td class="highlight">0.7</td>
+          <td>0.07</td>
+        </tr>
+        <tr>
+          <th class="row-header">Standard Month (~30.4 d)</th>
+          <td>3,043,700</td>
+          <td>30,437</td>
+          <td>304.4</td>
+          <td>30.44</td>
+          <td>3.044</td>
+          <td class="highlight">0.3044</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-desc">And the reverse — how many standard units equal one metric unit</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th class="corner">1 metric →</th>
+          <th>Std Sec</th>
+          <th>Std Min</th>
+          <th>Std Hr</th>
+          <th>Std Day</th>
+          <th>Std Week</th>
+          <th>Std Month</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th class="row-header">Metric Second</th>
+          <td class="highlight">0.864</td>
+          <td>0.0144</td>
+          <td>0.00024</td>
+          <td>0.00001</td>
+          <td>0.00000143</td>
+          <td>0.000000329</td>
+        </tr>
+        <tr>
+          <th class="row-header">Metric Minute</th>
+          <td>86.4</td>
+          <td class="highlight">1.44</td>
+          <td>0.024</td>
+          <td>0.001</td>
+          <td>0.000143</td>
+          <td>0.0000329</td>
+        </tr>
+        <tr>
+          <th class="row-header">Metric Hour</th>
+          <td>8,640</td>
+          <td>144</td>
+          <td class="highlight">2.4</td>
+          <td>0.1</td>
+          <td>0.01429</td>
+          <td>0.003286</td>
+        </tr>
+        <tr>
+          <th class="row-header">Metric Day</th>
+          <td>86,400</td>
+          <td>1,440</td>
+          <td>24</td>
+          <td class="highlight">1</td>
+          <td>0.1429</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <th class="row-header">Metric Week (10 d)</th>
+          <td>864,000</td>
+          <td>14,400</td>
+          <td>240</td>
+          <td>10</td>
+          <td class="highlight">1.4286</td>
+          <td>0.3286</td>
+        </tr>
+        <tr>
+          <th class="row-header">Metric Month (100 d)</th>
+          <td>8,640,000</td>
+          <td>144,000</td>
+          <td>2,400</td>
+          <td>100</td>
+          <td>14.286</td>
+          <td class="highlight">3.2857</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TIME OF DAY -->
+  <h2>Time of Day</h2>
+  <div class="section-desc">Every standard hour mapped to metric time</div>
+
+  <div class="table-wrap">
+    <table class="time-table">
+      <thead>
+        <tr>
+          <th>Standard</th>
+          <th>Metric</th>
+          <th>% of day</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th class="row-header">12:00 AM</th><td class="highlight">0:00:00</td><td>0%</td></tr>
+        <tr><th class="row-header"> 1:00 AM</th><td>0:41:67</td><td>4.2%</td></tr>
+        <tr><th class="row-header"> 2:00 AM</th><td>0:83:33</td><td>8.3%</td></tr>
+        <tr><th class="row-header"> 3:00 AM</th><td>1:25:00</td><td>12.5%</td></tr>
+        <tr><th class="row-header"> 4:00 AM</th><td>1:66:67</td><td>16.7%</td></tr>
+        <tr><th class="row-header"> 5:00 AM</th><td>2:08:33</td><td>20.8%</td></tr>
+        <tr><th class="row-header"> 6:00 AM</th><td class="highlight">2:50:00</td><td>25%</td></tr>
+        <tr><th class="row-header"> 7:00 AM</th><td>2:91:67</td><td>29.2%</td></tr>
+        <tr><th class="row-header"> 8:00 AM</th><td>3:33:33</td><td>33.3%</td></tr>
+        <tr><th class="row-header"> 9:00 AM</th><td class="highlight">3:75:00</td><td>37.5%</td></tr>
+        <tr><th class="row-header">10:00 AM</th><td>4:16:67</td><td>41.7%</td></tr>
+        <tr><th class="row-header">11:00 AM</th><td>4:58:33</td><td>45.8%</td></tr>
+        <tr><th class="row-header">12:00 PM</th><td class="highlight">5:00:00</td><td>50%</td></tr>
+        <tr><th class="row-header"> 1:00 PM</th><td>5:41:67</td><td>54.2%</td></tr>
+        <tr><th class="row-header"> 2:00 PM</th><td>5:83:33</td><td>58.3%</td></tr>
+        <tr><th class="row-header"> 3:00 PM</th><td class="highlight">6:25:00</td><td>62.5%</td></tr>
+        <tr><th class="row-header"> 4:00 PM</th><td>6:66:67</td><td>66.7%</td></tr>
+        <tr><th class="row-header"> 5:00 PM</th><td>7:08:33</td><td>70.8%</td></tr>
+        <tr><th class="row-header"> 6:00 PM</th><td class="highlight">7:50:00</td><td>75%</td></tr>
+        <tr><th class="row-header"> 7:00 PM</th><td>7:91:67</td><td>79.2%</td></tr>
+        <tr><th class="row-header"> 8:00 PM</th><td>8:33:33</td><td>83.3%</td></tr>
+        <tr><th class="row-header"> 9:00 PM</th><td class="highlight">8:75:00</td><td>87.5%</td></tr>
+        <tr><th class="row-header">10:00 PM</th><td>9:16:67</td><td>91.7%</td></tr>
+        <tr><th class="row-header">11:00 PM</th><td>9:58:33</td><td>95.8%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DURATION REFERENCE -->
+  <h2>Common Durations</h2>
+  <div class="section-desc">How familiar time spans translate</div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Duration</th>
+          <th>Standard</th>
+          <th>Metric</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th class="row-header">Coffee break</th><td>15 min</td><td class="highlight">10.42 metric min</td></tr>
+        <tr><th class="row-header">Lunch break</th><td>1 hour</td><td class="highlight">41.67 metric min</td></tr>
+        <tr><th class="row-header">Work day</th><td>8 hours</td><td class="highlight">3.33 metric hr</td></tr>
+        <tr><th class="row-header">Sleep</th><td>8 hours</td><td class="highlight">3.33 metric hr</td></tr>
+        <tr><th class="row-header">Weekend</th><td>2 days</td><td class="highlight">2 days</td></tr>
+        <tr><th class="row-header">Fortnight</th><td>14 days</td><td class="highlight">1.4 metric weeks</td></tr>
+        <tr><th class="row-header">Quarter</th><td>~91 days</td><td class="highlight">9.1 metric weeks</td></tr>
+        <tr><th class="row-header">Semester</th><td>~182 days</td><td class="highlight">1.82 metric months</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a id="conv-link" href="index.html">← Clock</a>
+  <button id="style-btn">Style</button>
+
+  <script>
+    const themes = ['style-crt.css', 'style-dark.css', 'style-minimal.css', 'style-7seg.css'];
+    const labels = ['CRT', 'Dark', 'Minimal', '7-SEG'];
+    let themeIndex = Math.max(0, themes.indexOf(document.getElementById('theme').getAttribute('href')));
+
+    const btn = document.getElementById('style-btn');
+    btn.textContent = labels[(themeIndex + 1) % themes.length];
+    btn.addEventListener('click', () => {
+      themeIndex = (themeIndex + 1) % themes.length;
+      document.getElementById('theme').href = themes[themeIndex];
+      localStorage.setItem('mt-theme', themes[themeIndex]);
+      btn.textContent = labels[(themeIndex + 1) % themes.length];
+    });
+  </script>
+
+</body>
+</html>

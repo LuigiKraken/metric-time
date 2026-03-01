@@ -7,6 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
   <link id="theme" rel="stylesheet" href="style-crt.css">
+  <script>
+    (function () {
+      var themes = ['style-crt.css', 'style-dark.css', 'style-minimal.css', 'style-7seg.css'];
+      var saved = localStorage.getItem('mt-theme');
+      if (saved && themes.indexOf(saved) !== -1) {
+        document.getElementById('theme').href = saved;
+      }
+    })();
+  </script>
 </head>
 <body>
   <div class="panel">
@@ -67,6 +76,7 @@
     </div>
   </div>
 
+  <a id="conv-link" href="conversion.html">Conversion</a>
   <button id="style-btn">Style</button>
 
   <script>
@@ -75,12 +85,13 @@
 
     const themes = ['style-crt.css', 'style-dark.css', 'style-minimal.css', 'style-7seg.css'];
     const labels = ['CRT', 'Dark', 'Minimal', '7-SEG'];
-    let themeIndex = 0;
+    let themeIndex = Math.max(0, themes.indexOf($('theme').getAttribute('href')));
 
     const btn = $('style-btn');
     btn.addEventListener('click', () => {
       themeIndex = (themeIndex + 1) % themes.length;
       $('theme').href = themes[themeIndex];
+      localStorage.setItem('mt-theme', themes[themeIndex]);
       btn.textContent = labels[(themeIndex + 1) % themes.length];
       // rebuild all digits so segment spans are present for the 7-seg theme
       Object.values(digitEls).forEach(([el, digits]) => {
@@ -88,7 +99,7 @@
         setDigits(el, parseInt(el.dataset.lastVal || '0'), digits);
       });
     });
-    btn.textContent = labels[1];
+    btn.textContent = labels[(themeIndex + 1) % themes.length];
 
     const SEG_NAMES = ['a','b','c','d','e','f','g'];
 
