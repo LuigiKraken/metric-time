@@ -192,11 +192,27 @@
 
     <h3>The year boundary: the December solstice</h3>
 
-    <p>January 1st has no astronomical meaning whatsoever. It was set by Roman political decree and has drifted further from any natural anchor ever since. This calendar uses the <strong>December solstice</strong> as the year boundary instead: the moment when Earth's axial tilt reaches its maximum relative to the Sun, the shortest day in the northern hemisphere and the longest in the south. This is a real, recurring, astronomically precise event that every culture on Earth can observe. It is a more honest new year than one chosen by Julius Caesar's calendar reform and later nudged by papal decree.</p>
+    <p>January 1st has no astronomical meaning whatsoever. It was set by Roman political decree and has drifted further from any natural anchor ever since. This calendar uses the <strong>December solstice</strong> as the year boundary instead: the moment when Earth's axial tilt reaches its maximum relative to the Sun, the shortest day in the northern hemisphere and the longest in the south. This is a real, recurring, astronomically precise event that every culture on Earth can observe.</p>
 
-    <p>The epoch itself is therefore the <strong>December solstice of metric year 0</strong> — the December solstice that occurred approximately 302,026 years ago (Gregorian year ~300,001 BCE). Every metric year begins at the exact moment of the December solstice, and all leap days are accounted for automatically: because the year boundary is a real astronomical event rather than a fixed calendar date, the varying length of the tropical year — including every leap day ever inserted or omitted — is already baked in. The clock simply counts elapsed days from the most recent December solstice.</p>
+    <p>The epoch is the <strong>December solstice of metric year 0</strong> — approximately 302,026 years ago (Gregorian year ~300,001 BCE). The clock is anchored to a single known solstice — December 21, 2024, the start of metric year 302,025 — and every other year boundary is computed from that point using a simple leap day rule.</p>
 
-    <p>It is worth being honest about one thing: this choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The metric system's great achievement is not that it picked a more natural zero. It's that the <em>structure</em> of the system is derived from physical reality, so that units compose cleanly regardless of where you start counting. The same is true here. The base-10 structure of the clock and calendar is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate, subject to revision, but belonging to no religion, no empire, and no single civilization. You don't need to remember the offset; just prepend <code>30</code> to your year. 2026 becomes <strong>302,026</strong>.</p>
+    <h3>Leap days</h3>
+
+    <p>The tropical year is approximately 365.24219 days. To keep the calendar aligned with the solstice, a leap day (day 366) is added at the end of certain years using two rules:</p>
+
+    <table>
+      <thead><tr><th>Rule</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td>Year divisible by 4</td><td>Leap year (366 days)</td></tr>
+        <tr><td>Year divisible by 128</td><td>Not a leap year (overrides ÷4)</td></tr>
+      </tbody>
+    </table>
+
+    <p>This gives an average year length of <strong>365.2421875 days</strong> — accurate to within one day per 100,000 years, and significantly better than the Gregorian system's three-rule cycle (÷4, skip ÷100, keep ÷400) which drifts a full day every ~3,300 years.</p>
+
+    <p>The practical beauty is that these rules are all you need. If you observe a single December solstice, note the metric year number, and then apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.</p>
+
+    <p>It is worth being honest about one thing: the choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The metric system's great achievement is not that it picked a more natural zero — it's that the <em>structure</em> is derived from physical reality, so that units compose cleanly regardless of where you start counting. The same is true here. The base-10 structure of the clock and calendar is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate, subject to revision, but belonging to no religion, no empire, and no single civilization.</p>
 
   </div>
 

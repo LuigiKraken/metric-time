@@ -67,21 +67,28 @@ No unit is special-cased. No conversion factor requires memorization beyond "mul
 | 1 minute | 100 seconds |
 | 1 decimal second | 0.864 Standard seconds |
 
-### The year epoch
+### The year epoch and boundary
 
-Our current calendar counts years from the traditionally estimated birth of Jesus, a date that is both religiously specific and historically uncertain. It encodes the assumptions of one culture into a system that now serves all of humanity. If we wanted a dating system that genuinely reflects our species as a whole, we could anchor it not to a single cultural or religious event, but to the emergence of humanity itself.
+Our current calendar counts years from the traditionally estimated birth of Jesus — religiously specific, historically uncertain, and encoding the assumptions of one culture into a system that now serves all of humanity. This calendar anchors year 0 to the emergence of *Homo sapiens* instead. Fossil evidence places that at roughly 300,000 years ago, tying the dating system to the scientifically established origin of our species rather than to religion, empire, or civilization. The current year is **302,026**.
 
-Rather than choosing a relatively recent milestone such as the beginning of agriculture (like in the Holocene era) which continues to shift with new archaeological discoveries, this calendar is grounded in a far deeper and more stable point in time. Fossil evidence places the emergence of *Homo sapiens* at roughly 300,000 years ago. Anchoring year 0 there ties our dating system to the scientifically established origin of modern humans rather than to religion, empire, or civilization. In that framework, the current year is **302,026**, marking approximately 302,000 years since the beginning of humanity as a species. This situates us within deep evolutionary time while remaining grounded in broadly supported empirical evidence.
+The year offset is easy to carry in your head: just prepend "30" to the Gregorian year. 2026 becomes 302,026. Ancient dates work the same way in reverse — subtract any BCE year from 300,000. 12,000 BCE becomes year 288,000.
 
-We keep the 2026 as a nod to the old system and to make date conversion more familiar. Just prepend "30" to the year, so 2026 becomes 302,026. This also makes it easy to work with ancient dates: you can simply subtract any BCE year from 300,000 to quickly convert it. For example, 12,000 BCE becomes year 288,000 (300,000 minus 12,000). This straightforward arithmetic makes tracking historical and modern dates much simpler.
+January 1st has no astronomical meaning. It was set by Roman political decree. This calendar uses the **December solstice** as the year boundary instead — the moment Earth's axial tilt reaches its maximum relative to the Sun, the shortest day in the northern hemisphere and the longest in the south. It is a real, recurring, astronomically precise event observable by every culture on Earth. The epoch is the **December solstice of metric year 0**, approximately 302,026 years ago (Gregorian year ~300,001 BCE). The clock is anchored to a single known solstice — December 21, 2024, the start of metric year 302,025 — and every other year boundary is computed from that point using the leap day rule.
 
-### The year boundary: the December solstice
+### Leap days
 
-January 1st has no astronomical meaning whatsoever. It was set by Roman political decree and has drifted further from any natural anchor ever since. This calendar uses the **December solstice** as the year boundary: the moment when Earth's axial tilt reaches its maximum relative to the Sun, the shortest day in the northern hemisphere and the longest in the south. This is a real, recurring, astronomically precise event that every culture on Earth can observe.
+The tropical year is approximately 365.24219 days. To keep the calendar aligned with the solstice, a leap day (day 366) is added at the end of certain years:
 
-The epoch is therefore the **December solstice of metric year 0** — the December solstice that occurred approximately 302,026 years ago (Gregorian year ~300,001 BCE). Every metric year begins at the exact moment of the December solstice, and all leap days are accounted for automatically: because the year boundary is a real astronomical event rather than a fixed calendar date, the varying length of the tropical year — including every leap day ever inserted or omitted — is already baked in. The clock simply counts elapsed days from the most recent December solstice.
+| Rule | Effect |
+|------|--------|
+| Year divisible by 4 | Leap year (366 days) |
+| Year divisible by 128 | Not a leap year (overrides ÷4) |
 
-It is worth being honest about one thing: this choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The metric system's great achievement is not that it picked a more natural zero. It's that the *structure* of the system is derived from physical reality, so that units compose cleanly regardless of where you start counting. The same is true here. The base-10 structure of the clock and calendar is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate, subject to revision, but belonging to no religion, no empire, and no single civilization. You don't need to remember the offset; just prepend `30` to your year. 2026 becomes **302,026**.
+This gives an average year length of **365.2421875 days** — accurate to within one day per 100,000 years. The Gregorian system's three-rule cycle (÷4, skip ÷100, keep ÷400) drifts a full day every ~3,300 years.
+
+If you observe a single December solstice, note the metric year number, and apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.
+
+The epoch choice is still arbitrary in the way all epoch choices are. The metric system's achievement is not a more natural zero — it's that the *structure* is derived from physical reality so units compose cleanly regardless of where counting starts. The base-10 structure is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate belonging to no religion, no empire, and no single civilization.
 
 ## Round Numbers, Real Intuition
 
