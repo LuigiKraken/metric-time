@@ -36,7 +36,7 @@ The clock is equally clean:
 | 1 hour | 100 minutes |
 | 1 minute | 100 seconds |
 
-When the clock reads **5:00:00**, the day is exactly **50%** over. When it reads **2:50:00**, you're **28.5%** through. The time *is* the percentage — no dividing by 24 and then by 60. A decimal second is 0.864 SI seconds, close enough that human perception doesn't notice the difference.
+When the clock reads **5:00:00**, the day is exactly **50%** over. When it reads **2:50:00**, you're **25%** through. The time *is* the percentage — no dividing by 24 and then by 60. A decimal second is 0.864 SI seconds, close enough that human perception doesn't notice the difference.
 
 ### Everything composes
 
