@@ -36,7 +36,7 @@ The clock is equally clean:
 | 1 hour | 100 minutes |
 | 1 minute | 100 seconds |
 
-When the clock reads **5:00:00**, the day is exactly **50%** over. When it reads **2:50:00**, you're **28.5%** through. The time *is* the percentage — no dividing by 24 and then by 60. A decimal second is 0.864 SI seconds, close enough that human perception doesn't notice the difference.
+When the clock reads **5:00:00**, the day is exactly **50%** over. When it reads **2:50:00**, you're **25%** through. The time *is* the percentage — no dividing by 24 and then by 60. A decimal second is 0.864 SI seconds, close enough that human perception doesn't notice the difference.
 
 ### Everything composes
 
@@ -63,7 +63,7 @@ No unit is special-cased. No conversion factor requires memorization beyond "mul
 | 1 day | 10 hours |
 | 1 hour | 100 minutes |
 | 1 minute | 100 seconds |
-| 1 decimal second | 0.864 SI seconds |
+| 1 decimal second | 0.864 Standard seconds |
 
 ### The year epoch
 
@@ -75,6 +75,22 @@ The same arbitrariness applies to where the year *begins*. January 1st has no as
 
 It is worth being honest about one thing: this choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The metric system's great achievement is not that it picked a more natural zero — it's that the *structure* of the system is derived from physical reality, so that units compose cleanly regardless of where you start counting. The same is true here. The base-10 structure of the clock and calendar is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate, subject to revision, but belonging to no religion, no empire, and no single civilization. You don't need to remember the offset; you just prepend `30` to your year. 2026 becomes **302,026**.
 
+## Round Numbers, Real Intuition
+
+| Metric Duration | Standard Equivalent | You Already Know This        |
+|----------------|--------------------|------------------------------|
+| 1 metric min  | 1 min 26 sec       | Reheat leftovers             |
+| 5 metric min  | 7 min 12 sec       | Hit snooze once              |
+| 10 metric min | 14 min 24 sec      | Quick coffee break           |
+| 25 metric min | 36 min             | Watch a sitcom               |
+| 50 metric min | 1 hr 12 min        | A solid gym session          |
+| 1 metric hr   | 2 hr 24 min        | A feature film               |
+| 2 metric hr   | 4 hr 48 min        | Half a work day              |
+| 3 metric hr   | 7 hr 12 min        | Full work day                |
+| 5 metric hr   | 12 hr exactly      | Sunrise to sunset            |
+| 1 metric week | 10 days            | A proper vacation            |
+| 1 metric month| 100 days           | An entire season             |
+
 ## Themes
 
 Cycle through styles with the **Style** button:
@@ -83,17 +99,3 @@ Cycle through styles with the **Style** button:
 - **Dark** — amber glow
 - **Minimal** — clean light
 - **7-SEG** — red seven-segment LED display
-
-## Use as Home Screen Widget
-
-1. **Serve the app** (any local web server works):
-   ```bash
-   npx serve .
-   ```
-   Open the URL on your phone.
-
-2. **Add to Home Screen:**
-   - **iOS:** Safari → Share → Add to Home Screen
-   - **Android:** Chrome → Menu (⋮) → Add to Home Screen
-
-3. Open the icon for a full-screen decimal clock.
