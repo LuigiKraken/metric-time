@@ -69,18 +69,19 @@ The year count is offset so year 0 aligns with roughly 100,000 years ago — the
 
 ## Round Numbers, Real Intuition
 
-Metric Duration	Standard Equivalent	You Already Know This
-1 metric min	1 min 26 sec	Reheat leftovers
-5 metric min	7 min 12 sec	Hit snooze once
-10 metric min	14 min 24 sec	Quick coffee break
-25 metric min	36 min	Watch a sitcom
-50 metric min	1 hr 12 min	A solid gym session
-1 metric hr	2 hr 24 min	A feature film
-2 metric hr	4 hr 48 min	Half a work day
-3 metric hr	7 hr 12 min	Full work day
-5 metric hr	12 hr exactly	Sunrise to sunset
-1 metric week	10 days	A proper vacation
-1 metric month	100 days	An entire season
+| Metric Duration | Standard Equivalent | You Already Know This        |
+|----------------|--------------------|------------------------------|
+| 1 metric min  | 1 min 26 sec       | Reheat leftovers             |
+| 5 metric min  | 7 min 12 sec       | Hit snooze once              |
+| 10 metric min | 14 min 24 sec      | Quick coffee break           |
+| 25 metric min | 36 min             | Watch a sitcom               |
+| 50 metric min | 1 hr 12 min        | A solid gym session          |
+| 1 metric hr   | 2 hr 24 min        | A feature film               |
+| 2 metric hr   | 4 hr 48 min        | Half a work day              |
+| 3 metric hr   | 7 hr 12 min        | Full work day                |
+| 5 metric hr   | 12 hr exactly      | Sunrise to sunset            |
+| 1 metric week | 10 days            | A proper vacation            |
+| 1 metric month| 100 days           | An entire season             |
 
 ## Themes
 
