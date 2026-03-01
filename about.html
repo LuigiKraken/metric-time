@@ -110,17 +110,17 @@
 
     <p>A decimal clock and calendar that replaces every arbitrary division in our timekeeping with clean base-10 structure.</p>
 
-    <h2>Why This Makes Sense</h2>
+    <h2>The Argument</h2>
 
     <p>Our current calendar is a patchwork of Babylonian base-60, Roman political compromises, and papal corrections. Months have 28, 29, 30, or 31 days depending on which one. Weeks don't align with months. Hours use base-24, minutes and seconds use base-60. None of it composes, none of it is mental-math friendly, and none of it had to be this way.</p>
 
-    <p>Metric time fixes all of it.</p>
+    <p>Metric time tries to fix all of it.</p>
 
     <h3>The date is the day number</h3>
 
     <p>The date format beyond the year is <strong>Month.Week.Day</strong>, but that's really just the three digits of the day-of-year written out. Day 237 of the year reads as month <strong>2</strong>, week <strong>3</strong>, day <strong>7</strong>. There is no lookup table, no irregular month lengths, no counting on your knuckles. The date <em>is</em> the number.</p>
 
-    <p>This one change makes everything trivial:</p>
+    <p>This one change simplifies a surprising amount:</p>
 
     <p><strong>How many days between two dates?</strong><br>
     Subtract them. June 15 to October 3 in the current system requires you to remember that June has 30 days, July has 31, August has 31, September has 30, then sum them up. In metric time, day 164 to day 275 is just 275 − 164 = <strong>111 days</strong>. Done.</p>
@@ -136,7 +136,7 @@
 
     <h3>The time is the fraction of the day</h3>
 
-    <p>The clock is equally clean:</p>
+    <p>The clock follows the same principle:</p>
 
     <table>
       <thead><tr><th>Unit</th><th>Division</th></tr></thead>
@@ -165,7 +165,7 @@
       </tbody>
     </table>
 
-    <p>No unit is special-cased. No conversion factor requires memorization beyond "multiply or divide by 10."</p>
+    <p>No unit is special-cased. The only conversion factor is "multiply or divide by 10."</p>
 
     <h2>The System</h2>
 
@@ -208,11 +208,11 @@
       </tbody>
     </table>
 
-    <p>This gives an average year length of <strong>365.2421875 days</strong> — accurate to within one day per 100,000 years, and significantly better than the Gregorian system's three-rule cycle (÷4, skip ÷100, keep ÷400) which drifts a full day every ~3,300 years.</p>
+    <p>This gives an average year length of <strong>365.2421875 days</strong> — accurate to within one day per 100,000 years, compared to the Gregorian system's three-rule cycle (÷4, skip ÷100, keep ÷400) which drifts a full day every ~3,300 years.</p>
 
-    <p>The practical beauty is that these rules are all you need. If you observe a single December solstice, note the metric year number, and then apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.</p>
+    <p>The practical upside is that these rules are all you need. If you observe a single December solstice, note the metric year number, and then apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.</p>
 
-    <p>It is worth being honest about one thing: the choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The metric system's great achievement is not that it picked a more natural zero — it's that the <em>structure</em> is derived from physical reality, so that units compose cleanly regardless of where you start counting. The same is true here. The base-10 structure of the clock and calendar is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate, subject to revision, but belonging to no religion, no empire, and no single civilization.</p>
+    <p>It is worth being honest about one thing: the choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The point of this system was never to find a more natural zero — it's that the <em>structure</em> tries to derive from physical reality, so that units compose cleanly regardless of where you start counting. The same idea applies here. Whether the base-10 structure of the clock and calendar actually succeeds at that is a fair question, but it's the core idea. The epoch is simply the least culturally loaded option we could find: a scientific estimate, subject to revision, belonging to no religion, no empire, and no single civilization.</p>
 
   </div>
 

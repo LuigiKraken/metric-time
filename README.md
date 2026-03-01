@@ -4,17 +4,17 @@ A decimal clock and calendar that replaces every arbitrary division in our timek
 
 **[Live Demo](https://luigikraken.github.io/metric-time/)**
 
-## Why This Makes Sense
+## The Argument
 
 Our current calendar is a patchwork of Babylonian base-60, Roman political compromises, and papal corrections. Months have 28, 29, 30, or 31 days depending on which one. Weeks don't align with months. Hours use base-24, minutes and seconds use base-60. None of it composes, none of it is mental-math friendly, and none of it had to be this way.
 
-Metric time fixes all of it.
+Metric time tries to fix all of it.
 
 ### The date *is* the day number
 
 The date format beyond the year is **Month.Week.Day**, but that's really just the three digits of the day-of-year written out. Day 237 of the year reads as month **2**, week **3**, day **7**. There is no lookup table, no irregular month lengths, no counting on your knuckles. The date *is* the number.
 
-This one change makes everything trivial:
+This one change simplifies a surprising amount:
 
 **How many days between two dates?**
 Subtract them. June 15 to October 3 in the current system requires you to remember that June has 30 days, July has 31, August has 31, September has 30, then sum them up. In metric time, day 164 to day 275 is just 275 - 164 = **111 days**. Done.
@@ -30,7 +30,7 @@ If today's day-of-month (the Week.Day portion) reads 73, there are 100 - 73 = **
 
 ### The time *is* the fraction of the day
 
-The clock is equally clean:
+The clock follows the same principle:
 
 | Unit | Division |
 |------|----------|
@@ -53,7 +53,7 @@ Because every unit is a power of 10 of the one below it, all conversions are tri
 | Weeks in a year? | **36.5** (365 days / 10) |
 | Months in a year? | **3.65** (365 days / 100) |
 
-No unit is special-cased. No conversion factor requires memorization beyond "multiply or divide by 10."
+No unit is special-cased. The only conversion factor is "multiply or divide by 10."
 
 ## The System
 
@@ -88,7 +88,7 @@ This gives an average year length of **365.2421875 days** — accurate to within
 
 If you observe a single December solstice, note the metric year number, and apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.
 
-The epoch choice is still arbitrary in the way all epoch choices are. The metric system's achievement is not a more natural zero — it's that the *structure* is derived from physical reality so units compose cleanly regardless of where counting starts. The base-10 structure is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate belonging to no religion, no empire, and no single civilization.
+The epoch choice is still arbitrary in the way all epoch choices are. The point of this system was never to find a more natural zero — it's that the *structure* tries to derive from physical reality so units compose cleanly regardless of where counting starts. Whether the base-10 structure actually succeeds at that is a fair question, but it's the core idea. The epoch is simply the least culturally loaded option we could find: a scientific estimate, subject to revision, belonging to no religion, no empire, and no single civilization.
 
 ## Round Numbers, Real Intuition
 
