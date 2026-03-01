@@ -137,7 +137,7 @@
       const now = new Date();
 
       const doy = Math.floor((now - new Date(now.getFullYear(), 0, 0)) / 86400000) - 1;
-      setDigits($('dy'),     now.getFullYear() + 100000, 6);
+      setDigits($('dy'),     now.getFullYear() + 300000, 6);
       setDigits($('dMonth'), (doy / 100) | 0,           1);
       setDigits($('dWeek'),  ((doy % 100) / 10) | 0,    1);
       setDigits($('dDay'),   doy % 10,                  1);
