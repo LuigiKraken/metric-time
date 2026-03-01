@@ -184,6 +184,30 @@ body {
   color: #555;
 }
 
+#about-link {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: transparent;
+  color: #bbb;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+#about-link:hover {
+  background: #f0f0f0;
+  color: #555;
+}
+
 @media (max-width: 500px) {
   .panel { padding: 30px 20px 20px; }
   .colon { padding: 0 2px; }

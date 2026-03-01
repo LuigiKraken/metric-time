@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metric Time — About</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+  <link id="theme" rel="stylesheet" href="style-crt.css">
+  <script>
+    (function () {
+      var themes = ['style-crt.css', 'style-dark.css', 'style-minimal.css', 'style-7seg.css'];
+      var saved = localStorage.getItem('mt-theme');
+      if (saved && themes.indexOf(saved) !== -1) {
+        document.getElementById('theme').href = saved;
+      }
+    })();
+  </script>
+  <style>
+    body {
+      display: block !important;
+      height: auto !important;
+      min-height: 100vh !important;
+      overflow: auto !important;
+      overflow-x: hidden;
+      padding: 40px 20px 80px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', monospace;
+      text-align: center;
+      font-size: clamp(1.1rem, 3vw, 1.6rem);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 50px;
+    }
+
+    .about-content {
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.8;
+      font-size: clamp(11px, 1.5vw, 13px);
+      letter-spacing: 0.3px;
+    }
+
+    .about-content h2 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(0.7rem, 1.8vw, 0.95rem);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin: 50px 0 18px;
+      text-align: left;
+    }
+
+    .about-content h3 {
+      font-family: 'Orbitron', monospace;
+      font-size: clamp(0.6rem, 1.4vw, 0.8rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin: 34px 0 12px;
+    }
+
+    .about-content p {
+      margin: 0 0 16px;
+    }
+
+    .about-content table {
+      border-collapse: collapse;
+      margin: 0 0 20px;
+      font-size: clamp(10px, 1.4vw, 13px);
+      width: 100%;
+    }
+
+    .about-content th,
+    .about-content td {
+      padding: 8px 14px;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .about-content thead th {
+      font-size: clamp(9px, 1.2vw, 11px);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .about-content strong {
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 24px 10px 80px; }
+    }
+  </style>
+</head>
+<body class="conv-page">
+
+  <h1>About</h1>
+  <div class="subtitle">Metric Time — the case for base-10 timekeeping</div>
+
+  <div class="about-content">
+
+    <p>A decimal clock and calendar that replaces every arbitrary division in our timekeeping with clean base-10 structure.</p>
+
+    <h2>Why This Makes Sense</h2>
+
+    <p>Our current calendar is a patchwork of Babylonian base-60, Roman political compromises, and papal corrections. Months have 28, 29, 30, or 31 days depending on which one. Weeks don't align with months. Hours use base-24, minutes and seconds use base-60. None of it composes, none of it is mental-math friendly, and none of it had to be this way.</p>
+
+    <p>Metric time fixes all of it.</p>
+
+    <h3>The date is the day number</h3>
+
+    <p>The date format beyond the year is <strong>Month.Week.Day</strong>, but that's really just the three digits of the day-of-year written out. Day 237 of the year reads as month <strong>2</strong>, week <strong>3</strong>, day <strong>7</strong>. There is no lookup table, no irregular month lengths, no counting on your knuckles. The date <em>is</em> the number.</p>
+
+    <p>This one change makes everything trivial:</p>
+
+    <p><strong>How many days between two dates?</strong><br>
+    Subtract them. June 15 to October 3 in the current system requires you to remember that June has 30 days, July has 31, August has 31, September has 30, then sum them up. In metric time, day 164 to day 275 is just 275 − 164 = <strong>111 days</strong>. Done.</p>
+
+    <p><strong>What week of the year are you in?</strong><br>
+    Read two digits. If today is day 237, you're in week <strong>23</strong>. No dividing by 7, no checking a reference calendar, no off-by-one confusion about whether weeks start on Sunday or Monday. Two digits, that's it.</p>
+
+    <p><strong>How many hours in a month?</strong><br>
+    Every month is 100 days. Every day is 10 hours. So every month is <strong>1,000 hours</strong>. You don't calculate it, you just know it. Compare that to the current system where February has 672 hours, March has 744, and April has 720, for no good reason.</p>
+
+    <p><strong>How many days until the end of the month?</strong><br>
+    If today's day-of-month (the Week.Day portion) reads 73, there are 100 − 73 = <strong>27 days</strong> left. Always. Every month.</p>
+
+    <h3>The time is the fraction of the day</h3>
+
+    <p>The clock is equally clean:</p>
+
+    <table>
+      <thead><tr><th>Unit</th><th>Division</th></tr></thead>
+      <tbody>
+        <tr><td>1 day</td><td>10 hours</td></tr>
+        <tr><td>1 hour</td><td>100 minutes</td></tr>
+        <tr><td>1 minute</td><td>100 seconds</td></tr>
+      </tbody>
+    </table>
+
+    <p>When the clock reads <strong>5:00:00</strong>, the day is exactly <strong>50%</strong> over. When it reads <strong>2:50:00</strong>, you're <strong>25%</strong> through. The time <em>is</em> the percentage, no dividing by 24 and then by 60. A decimal second is 0.864 SI seconds, close enough that human perception doesn't notice the difference.</p>
+
+    <h3>Everything composes</h3>
+
+    <p>Because every unit is a power of 10 of the one below it, all conversions are trivial:</p>
+
+    <table>
+      <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+      <tbody>
+        <tr><td>Hours in a week?</td><td><strong>100</strong> (10 days × 10 hours)</td></tr>
+        <tr><td>Hours in a month?</td><td><strong>1,000</strong> (100 days × 10 hours)</td></tr>
+        <tr><td>Minutes in a day?</td><td><strong>1,000</strong> (10 hours × 100 minutes)</td></tr>
+        <tr><td>Seconds in a day?</td><td><strong>100,000</strong> (just move the decimal point)</td></tr>
+        <tr><td>Weeks in a year?</td><td><strong>36.5</strong> (365 days / 10)</td></tr>
+        <tr><td>Months in a year?</td><td><strong>3.65</strong> (365 days / 100)</td></tr>
+      </tbody>
+    </table>
+
+    <p>No unit is special-cased. No conversion factor requires memorization beyond "multiply or divide by 10."</p>
+
+    <h2>The System</h2>
+
+    <table>
+      <thead><tr><th>Structure</th><th>Value</th></tr></thead>
+      <tbody>
+        <tr><td>1 year</td><td>~3.65 months of 100 days</td></tr>
+        <tr><td>1 month</td><td>10 weeks</td></tr>
+        <tr><td>1 week</td><td>10 days</td></tr>
+        <tr><td>1 day</td><td>10 hours</td></tr>
+        <tr><td>1 hour</td><td>100 minutes</td></tr>
+        <tr><td>1 minute</td><td>100 seconds</td></tr>
+        <tr><td>1 decimal second</td><td>0.864 standard seconds</td></tr>
+      </tbody>
+    </table>
+
+    <h3>The year epoch</h3>
+
+    <p>Our current calendar counts years from the traditionally estimated birth of Jesus, a date that is both religiously specific and historically uncertain. It encodes the assumptions of one culture into a system that now serves all of humanity. If we wanted a dating system that genuinely reflects our species as a whole, we could anchor it not to a single cultural or religious event, but to the emergence of humanity itself.</p>
+
+    <p>Rather than choosing a relatively recent milestone such as the beginning of agriculture (like in the holocene era) which continues to shift with new archaeological discoveries, this calendar is grounded in a far deeper and more stable point in time. Fossil evidence places the emergence of <em>Homo sapiens</em> at roughly 300,000 years ago. Anchoring year 0 there ties our dating system to the scientifically established origin of modern humans rather than to religion, empire, or civilization. In that framework, the current year is <strong>302,026</strong>, marking approximately 302,000 years since the beginning of humanity as a species. This situates us within deep evolutionary time while remaining grounded in broadly supported empirical evidence.</p>
+
+    <p>We keep the 2026 as a nod to the old system and to make date conversion more familiar. Just prepend "30" to the year, so 2026 becomes 302,026. This also makes it easy to work with ancient dates: you can simply subtract any BCE year from 300,000 to quickly convert it. For example, 12,000 BCE becomes year 288,000 (300,000 minus 12,000). This straightforward arithmetic makes tracking historical and modern dates much simpler.</p>
+
+    <p>The same arbitrariness applies to where the year <em>begins</em>. January 1st has no astronomical meaning whatsoever. It was set by Roman political decree and has drifted further from any natural anchor ever since. A more defensible starting point would be the December solstice: the moment when Earth's axial tilt reaches its maximum relative to the Sun, the shortest day in the northern hemisphere and the longest in the south. This is a real, recurring, astronomically precise event that every culture on Earth can observe. Alternatively, the perihelion, the point in Earth's orbit closest to the Sun which falls around January 3rd, offers a purely orbital anchor untied to any hemisphere's seasons. Either would be more honest than a date chosen by Julius Caesar's calendar reform and later nudged by papal decree. This system currently inherits January 1st as its year boundary simply because changing the epoch year is already a significant departure from convention; changing the new year as well would compound the unfamiliarity. But the solstice is the correct answer, and a future revision should adopt it.</p>
+
+    <p>It is worth being honest about one thing: this choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The metric system's great achievement is not that it picked a more natural zero. It's that the <em>structure</em> of the system is derived from physical reality, so that units compose cleanly regardless of where you start counting. The same is true here. The base-10 structure of the clock and calendar is what makes this system genuinely better. The epoch is simply the least culturally loaded option available: a scientific estimate, subject to revision, but belonging to no religion, no empire, and no single civilization. You don't need to remember the offset; just prepend <code>30</code> to your year. 2026 becomes <strong>302,026</strong>.</p>
+
+  </div>
+
+  <a id="conv-link" href="conversion.html">Conversion</a>
+  <a id="about-link" href="index.html">← Clock</a>
+  <button id="style-btn">Style</button>
+
+  <script>
+    const themes = ['style-crt.css', 'style-dark.css', 'style-minimal.css', 'style-7seg.css'];
+    const labels = ['CRT', 'Dark', 'Minimal', '7-SEG'];
+    let themeIndex = Math.max(0, themes.indexOf(document.getElementById('theme').getAttribute('href')));
+
+    const btn = document.getElementById('style-btn');
+    btn.textContent = labels[(themeIndex + 1) % themes.length];
+    btn.addEventListener('click', () => {
+      themeIndex = (themeIndex + 1) % themes.length;
+      document.getElementById('theme').href = themes[themeIndex];
+      localStorage.setItem('mt-theme', themes[themeIndex]);
+      btn.textContent = labels[(themeIndex + 1) % themes.length];
+    });
+  </script>
+
+</body>
+</html>

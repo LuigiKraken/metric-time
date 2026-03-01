@@ -208,6 +208,30 @@ body::before {
   color: rgba(51,255,51,0.9);
 }
 
+#about-link {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 200;
+  background: rgba(51,255,51,0.08);
+  color: rgba(51,255,51,0.5);
+  border: 1px solid rgba(51,255,51,0.2);
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: 'Orbitron', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+#about-link:hover {
+  background: rgba(51,255,51,0.15);
+  color: rgba(51,255,51,0.9);
+}
+
 @media (max-width: 500px) {
   .panel { padding: 30px 20px 20px; }
   .colon { padding: 0 2px; }
