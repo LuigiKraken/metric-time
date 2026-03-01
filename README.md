@@ -63,7 +63,7 @@ No unit is special-cased. No conversion factor requires memorization beyond "mul
 | 1 day | 10 hours |
 | 1 hour | 100 minutes |
 | 1 minute | 100 seconds |
-| 1 decimal second | 0.864 SI seconds |
+| 1 decimal second | 0.864 Standard seconds |
 
 The year count is offset so year 0 aligns with roughly 100,000 years ago — the era of early shared human culture, a more honest anchor for "when civilization started" than the birth of any one figure. You don't need to remember the offset; you just prepend `10` to your year. 2026 becomes **102,026**.
 
