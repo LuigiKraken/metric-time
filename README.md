@@ -67,6 +67,21 @@ No unit is special-cased. No conversion factor requires memorization beyond "mul
 
 The year count is offset so year 0 aligns with roughly 100,000 years ago — the era of early shared human culture, a more honest anchor for "when civilization started" than the birth of any one figure. You don't need to remember the offset; you just prepend `10` to your year. 2026 becomes **102,026**.
 
+## Round Numbers, Real Intuition
+
+Metric Duration	Standard Equivalent	You Already Know This
+1 metric min	1 min 26 sec	Reheat leftovers
+5 metric min	7 min 12 sec	Hit snooze once
+10 metric min	14 min 24 sec	Quick coffee break
+25 metric min	36 min	Watch a sitcom
+50 metric min	1 hr 12 min	A solid gym session
+1 metric hr	2 hr 24 min	A feature film
+2 metric hr	4 hr 48 min	Half a work day
+3 metric hr	7 hr 12 min	Full work day
+5 metric hr	12 hr exactly	Sunrise to sunset
+1 metric week	10 days	A proper vacation
+1 metric month	100 days	An entire season
+
 ## Themes
 
 Cycle through styles with the **Style** button:
@@ -75,17 +90,3 @@ Cycle through styles with the **Style** button:
 - **Dark** — amber glow
 - **Minimal** — clean light
 - **7-SEG** — red seven-segment LED display
-
-## Use as Home Screen Widget
-
-1. **Serve the app** (any local web server works):
-   ```bash
-   npx serve .
-   ```
-   Open the URL on your phone.
-
-2. **Add to Home Screen:**
-   - **iOS:** Safari → Share → Add to Home Screen
-   - **Android:** Chrome → Menu (⋮) → Add to Home Screen
-
-3. Open the icon for a full-screen decimal clock.
