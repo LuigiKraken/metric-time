@@ -93,7 +93,7 @@ body {
 .digit-cell .ghost-char {
   color: rgba(255,184,77,0.06);
   user-select: none;
-  visibility: visible;
+  visibility: hidden;
 }
 
 .digit-cell .val-char {
