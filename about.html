@@ -118,7 +118,7 @@
 
     <h3>The date is the day number</h3>
 
-    <p>The date format beyond the year is <strong>Month.Week.Day</strong>, but that's really just the three digits of the day-of-year written out. Day 237 of the year reads as month <strong>2</strong>, week <strong>3</strong>, day <strong>7</strong>. There is no lookup table, no irregular month lengths, no counting on your knuckles. The date <em>is</em> the number.</p>
+    <p>The date format is <strong>Month.Week.Day</strong>, but that's really just the three digits of the day-of-year written out. Day 237 of the year reads as month <strong>2</strong>, week <strong>3</strong>, day <strong>7</strong>. There is no lookup table, no irregular month lengths, no counting on your knuckles. The date <em>is</em> the number.</p>
 
     <p>This one change simplifies a surprising amount:</p>
 
@@ -160,8 +160,6 @@
         <tr><td>Hours in a month?</td><td><strong>1,000</strong> (100 days × 10 hours)</td></tr>
         <tr><td>Minutes in a day?</td><td><strong>1,000</strong> (10 hours × 100 minutes)</td></tr>
         <tr><td>Seconds in a day?</td><td><strong>100,000</strong> (just move the decimal point)</td></tr>
-        <tr><td>Weeks in a year?</td><td><strong>36.5</strong> (365 days / 10)</td></tr>
-        <tr><td>Months in a year?</td><td><strong>3.65</strong> (365 days / 100)</td></tr>
       </tbody>
     </table>
 
@@ -172,8 +170,7 @@
     <table>
       <thead><tr><th>Structure</th><th>Value</th></tr></thead>
       <tbody>
-        <tr><td>1 year</td><td>~3.65 months of 100 days</td></tr>
-        <tr><td>1 month</td><td>10 weeks</td></tr>
+        <tr><td>1 month</td><td>100 days</td></tr>
         <tr><td>1 week</td><td>10 days</td></tr>
         <tr><td>1 day</td><td>10 hours</td></tr>
         <tr><td>1 hour</td><td>100 minutes</td></tr>
@@ -182,19 +179,13 @@
       </tbody>
     </table>
 
-    <h3>The year epoch</h3>
-
-    <p>Our current calendar counts years from the traditionally estimated birth of Jesus, a date that is both religiously specific and historically uncertain. It encodes the assumptions of one culture into a system that now serves all of humanity. If we wanted a dating system that genuinely reflects our species as a whole, we could anchor it not to a single cultural or religious event, but to the emergence of humanity itself.</p>
-
-    <p>Rather than choosing a relatively recent milestone such as the beginning of agriculture (like in the Holocene era) which continues to shift with new archaeological discoveries, this calendar is grounded in a far deeper and more stable point in time. Fossil evidence places the emergence of <em>Homo sapiens</em> at roughly 300,000 years ago. Anchoring year 0 there ties our dating system to the scientifically established origin of modern humans rather than to religion, empire, or civilization. In that framework, the current year is <strong>302,026</strong>, marking approximately 302,000 years since the beginning of humanity as a species. This situates us within deep evolutionary time while remaining grounded in broadly supported empirical evidence.</p>
-
-    <p>We keep the 2026 as a nod to the old system and to make date conversion more familiar. Just prepend "30" to the year, so 2026 becomes 302,026. This also makes it easy to work with ancient dates: you can simply subtract any BCE year from 300,000 to quickly convert it. For example, 12,000 BCE becomes year 288,000 (300,000 minus 12,000). This straightforward arithmetic makes tracking historical and modern dates much simpler.</p>
-
     <h3>The year boundary: the December solstice</h3>
 
     <p>January 1st has no astronomical meaning whatsoever. It was set by Roman political decree and has drifted further from any natural anchor ever since. This calendar uses the <strong>December solstice</strong> as the year boundary instead: the moment when Earth's axial tilt reaches its maximum relative to the Sun, the shortest day in the northern hemisphere and the longest in the south. This is a real, recurring, astronomically precise event that every culture on Earth can observe.</p>
 
-    <p>The epoch is the <strong>December solstice of metric year 0</strong> — approximately 302,026 years ago (Gregorian year ~300,001 BCE). The clock is anchored to a single known solstice — December 21, 2024, the start of metric year 302,025 — and every other year boundary is computed from that point using a simple leap day rule.</p>
+    <p>This system's true zero — <strong>00000000</strong> — is the December solstice instant <strong>2021-12-21 15:59:18 UTC</strong> (Unix timestamp 1640102358). That moment is the December solstice that came closest to a whole UTC hour in the entire leap-second era (1972–2100), only 42 seconds before 16:00:00 UTC, making it the most astronomically precise and verifiable zero point available in modern civil timekeeping.</p>
+
+    <p>All time before and after that instant is counted using the ÷4 / ÷128 leap year rule, which keeps every year boundary locked to the solstice without any further reference to the sky. To convert any UTC timestamp to metric time: subtract 1640102358, divide by 864, and you have total metric seconds since zero.</p>
 
     <h3>Leap days</h3>
 
@@ -210,9 +201,8 @@
 
     <p>This gives an average year length of <strong>365.2421875 days</strong> — accurate to within one day per 100,000 years, compared to the Gregorian system's three-rule cycle (÷4, skip ÷100, keep ÷400) which drifts a full day every ~3,300 years.</p>
 
-    <p>The practical upside is that these rules are all you need. If you observe a single December solstice, note the metric year number, and then apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.</p>
+    <p>The practical upside is that these rules are all you need. If you observe a single December solstice and apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.</p>
 
-    <p>It is worth being honest about one thing: the choice of epoch is still arbitrary, in the same way that all epoch choices are arbitrary. The point of this system was never to find a more natural zero — it's that the <em>structure</em> tries to derive from physical reality, so that units compose cleanly regardless of where you start counting. The same idea applies here. Whether the base-10 structure of the clock and calendar actually succeeds at that is a fair question, but it's the core idea. The epoch is simply the least culturally loaded option we could find: a scientific estimate, subject to revision, belonging to no religion, no empire, and no single civilization.</p>
 
   </div>
 

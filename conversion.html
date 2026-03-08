@@ -663,6 +663,57 @@
 
   </div>
 
+  <!-- UTC → METRIC FORMULA -->
+  <h2>UTC → Metric Time Formula</h2>
+  <div class="section-desc">
+    Epoch: <strong>2021-12-21 15:59:18 UTC</strong> — Unix 1640102358 — the closest December solstice to a whole UTC hour in the leap-second era (42 s from 16:00:00)
+  </div>
+
+  <style>
+    .formula-wrap {
+      max-width: 760px;
+      margin: 0 auto 60px;
+    }
+    .formula-block {
+      padding: 24px 28px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(10px, 1.4vw, 13px);
+      line-height: 2;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .formula-comment { opacity: 0.45; }
+  </style>
+
+  <div class="formula-wrap">
+    <div class="formula-block fact-card"><span class="formula-comment">// ── Epoch ────────────────────────────────────────────────────────────────</span>
+EPOCH_UTC_S = 1640102358          <span class="formula-comment">// 2021-12-21 15:59:18 UTC</span>
+
+<span class="formula-comment">// ── Step 1 — elapsed metric seconds ──────────────────────────────────────</span>
+metric_s = (utc_unix_seconds - EPOCH_UTC_S) / 0.864
+
+<span class="formula-comment">// ── Step 2 — split into days and time-of-day ─────────────────────────────</span>
+total_days   = floor(metric_s / 100000)
+time_of_day  = floor(metric_s % 100000)   <span class="formula-comment">// 0 – 99 999</span>
+
+<span class="formula-comment">// ── Step 3 — time of day ─────────────────────────────────────────────────</span>
+hour   = floor(time_of_day / 10000)        <span class="formula-comment">// 0 – 9</span>
+minute = floor(time_of_day % 10000 / 100)  <span class="formula-comment">// 0 – 99</span>
+second = time_of_day % 100                 <span class="formula-comment">// 0 – 99</span>
+
+<span class="formula-comment">// ── Step 4 — walk years with the leap rule ────────────────────────────────</span>
+<span class="formula-comment">//   leap year if: (year % 4 === 0) AND (year % 128 !== 0)</span>
+<span class="formula-comment">//   avg year = 365.2421875 days  →  &lt; 1 day drift per 100 000 years</span>
+
+<span class="formula-comment">// ── Step 5 — day within the year ─────────────────────────────────────────</span>
+month = floor(day_of_year / 100)           <span class="formula-comment">// 0 – 3</span>
+week  = floor(day_of_year % 100 / 10)      <span class="formula-comment">// 0 – 9</span>
+day   = day_of_year % 10                   <span class="formula-comment">// 0 – 9</span>
+
+<span class="formula-comment">// ── Inverse (metric → UTC) ────────────────────────────────────────────────</span>
+utc_unix_seconds = EPOCH_UTC_S + metric_s * 0.864</div>
+  </div>
+
   <a id="conv-link" href="about.html">About</a>
   <a id="about-link" href="index.html">Clock</a>
   <button id="style-btn">Style</button>

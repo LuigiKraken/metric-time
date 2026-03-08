@@ -23,13 +23,6 @@
 
     <div class="date-row">
       <div class="segment-group">
-        <div class="digit-wrap" id="dy"></div>
-        <div class="seg-label">Year</div>
-      </div>
-
-      <span class="date-dot">.</span>
-
-      <div class="segment-group">
         <div class="digit-wrap" id="dMonth"></div>
         <div class="seg-label">Month</div>
       </div>
@@ -68,7 +61,7 @@
 
     <div class="explain">
       <div class="desc">
-        1 year = ~3.65 months of 100 days · 1 month = 10 weeks · 1 week = 10 days
+        1 month = 100 days · 1 week = 10 days
       </div>
       <div class="desc" style="margin-top:6px;">
         1 day = 10 hours · 1 hour = 100 minutes · 1 minute = 100 seconds · 1 second ≈ 0.864 real seconds
@@ -134,15 +127,23 @@
     // track els for theme-switch rebuild
     const digitEls = {};
 
-    // Anchor: metric year 302,025 starts on December 21, 2024 (local midnight),
-    // the day the December solstice fell on. From this single reference point,
-    // all other year boundaries are computed using the leap day rule:
-    //   - divisible by 4  → leap year (366 days)
+    // Epoch: 2021-12-21 15:59:18 UTC — the December solstice instant that came
+    // closest to a whole UTC hour in the entire leap-second era (1972–2100).
+    // Only 42 s before 16:00:00 UTC. Unix timestamp: 1640102358.
+    // Verified against JPL ephemeris data (Skyfield / NAIF kernels).
+    //
+    // Metric year 302022 begins at this moment. All subsequent year boundaries
+    // are computed forward using the leap day rule:
+    //   - divisible by 4   → leap year (366 days)
     //   - divisible by 128 → NOT a leap year (overrides ÷4)
-    //   - otherwise → normal year (365 days)
     // Yields 365.2421875 days/year — drifts < 1 day per 100,000 years.
-    const ANCHOR_YEAR = 302025;
-    const ANCHOR_MS = new Date(2024, 11, 21).getTime();
+    //
+    // Time pipeline (fully UTC-continuous, no local-midnight dependency):
+    //   metric_seconds = (Date.now() - EPOCH_UTC_MS) / 864
+    //   days_since_epoch = floor(metric_seconds / 100000)
+    //   time_of_day      = floor(metric_seconds % 100000)   [0–99999]
+    const EPOCH_UTC_MS    = Date.UTC(2021, 11, 21, 15, 59, 18, 0); // 1640102358000
+    const EPOCH_METRIC_YEAR = 302022;
 
     function isMetricLeapYear(y) {
       return y % 4 === 0 && y % 128 !== 0;
@@ -152,11 +153,12 @@
       return isMetricLeapYear(y) ? 366 : 365;
     }
 
-    function metricDate(now) {
-      const todayMs = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
-      const totalDays = Math.round((todayMs - ANCHOR_MS) / 86400000);
+    function metricDate(nowMs) {
+      const totalMetricSec = (nowMs - EPOCH_UTC_MS) / 864;
+      const totalDays = Math.floor(totalMetricSec / 100000);
+      const timeOfDay  = Math.floor(totalMetricSec % 100000);
 
-      let year = ANCHOR_YEAR;
+      let year      = EPOCH_METRIC_YEAR;
       let remaining = totalDays;
 
       if (remaining >= 0) {
@@ -171,27 +173,22 @@
         }
       }
 
-      return { metricYear: year, dayOfYear: remaining };
+      return { metricYear: year, dayOfYear: remaining, timeOfDay };
     }
 
     function tick() {
-      const now = new Date();
-      const { metricYear, dayOfYear } = metricDate(now);
+      const { dayOfYear, timeOfDay } = metricDate(Date.now());
 
-      setDigits($('dy'),     metricYear,                6);
-      setDigits($('dMonth'), (dayOfYear / 100) | 0,     1);
-      setDigits($('dWeek'),  ((dayOfYear % 100) / 10) | 0, 1);
-      setDigits($('dDay'),   dayOfYear % 10,            1);
+      setDigits($('dMonth'), (dayOfYear / 100) | 0,           1);
+      setDigits($('dWeek'),  ((dayOfYear % 100) / 10) | 0,    1);
+      setDigits($('dDay'),   dayOfYear % 10,                   1);
 
-      const secs = now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds() + now.getMilliseconds() / 1000;
-      const t = Math.floor(secs / 86400 * 100000);
-      setDigits($('dh'), (t / 10000) | 0,         1);
-      setDigits($('dm'), (t % 10000 / 100) | 0,   2);
-      setDigits($('ds'), t % 100,                  2);
+      setDigits($('dh'), (timeOfDay / 10000) | 0,             1);
+      setDigits($('dm'), (timeOfDay % 10000 / 100) | 0,       2);
+      setDigits($('ds'), timeOfDay % 100,                      2);
 
       // register for theme-switch rebuilds (only needs to happen once)
-      if (!digitEls.dy) {
-        digitEls.dy     = [$('dy'),     6];
+      if (!digitEls.dMonth) {
         digitEls.dMonth = [$('dMonth'), 1];
         digitEls.dWeek  = [$('dWeek'),  1];
         digitEls.dDay   = [$('dDay'),   1];
