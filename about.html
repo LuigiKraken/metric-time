@@ -96,6 +96,19 @@
       letter-spacing: 0.5px;
     }
 
+    .formula-block {
+      max-width: 100%;
+      margin: 20px 0 30px;
+      padding: 24px 28px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: clamp(10px, 1.4vw, 13px);
+      line-height: 2;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    .formula-comment { opacity: 0.45; }
+
     @media (max-width: 600px) {
       body { padding: 24px 10px 80px; }
     }
@@ -203,6 +216,35 @@
 
     <p>The practical upside is that these rules are all you need. If you observe a single December solstice and apply the ÷4 / ÷128 rule from that point forward, you can count days indefinitely without ever looking at the sky again. On a desert island with a stick and a tally, this calendar stays accurate for thousands of years.</p>
 
+    <h2>The Conversion Formula</h2>
+
+    <p>Everything above reduces to a handful of arithmetic steps. Given any UTC Unix timestamp:</p>
+
+    <div class="formula-block fact-card"><span class="formula-comment">// UTC → Metric Time  (pseudocode)</span>
+
+<span class="formula-comment">// 1. How many real seconds have passed since the metric epoch?</span>
+elapsed_real_seconds = current_unix_time - 1640102358
+
+<span class="formula-comment">// 2. Convert to metric seconds  (1 metric second = 0.864 real seconds)</span>
+metric_seconds = elapsed_real_seconds / 0.864
+
+<span class="formula-comment">// 3. Split into whole days and the time remaining in today</span>
+day_number  = floor(metric_seconds / 100000)   <span class="formula-comment">// each metric day = 100 000 metric seconds</span>
+time_today  = metric_seconds mod 100000        <span class="formula-comment">// 0 – 99 999</span>
+
+<span class="formula-comment">// 4. Break the time-of-day into hours / minutes / seconds</span>
+hour   = floor(time_today / 10000)             <span class="formula-comment">// 0 – 9  (10 hours per day)</span>
+minute = floor(time_today mod 10000 / 100)     <span class="formula-comment">// 0 – 99 (100 minutes per hour)</span>
+second = time_today mod 100                    <span class="formula-comment">// 0 – 99 (100 seconds per minute)</span>
+
+<span class="formula-comment">// 5. Count off years from day_number</span>
+<span class="formula-comment">//    normal year = 365 days,  leap year = 366 days</span>
+<span class="formula-comment">//    leap if: (year mod 4 = 0) AND (year mod 128 ≠ 0)</span>
+year        = (subtract year lengths from day_number until it goes negative)
+day_of_year = the remainder  <span class="formula-comment">// just a number 0 – 364 (or 365 in a leap year)</span>
+
+<span class="formula-comment">// ── Reverse: metric → UTC ──────────────────────────────────────────────</span>
+unix_time = 1640102358 + (metric_seconds * 0.864)</div>
 
   </div>
 
